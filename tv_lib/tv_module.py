@@ -76,7 +76,7 @@ class TVHistorical:
             ws.recv() # Banner
             chart_sess = _new_session()
             ws.send(_encode({"m": "set_auth_token", "p": [self.cfg.auth_token]}))
-            ws.send(_encode({"m": "chart_create_session", [chart_sess, ""]}))
+            ws.send(_encode({"m": "chart_create_session", "p": [chart_sess, ""]}))
             ws.send(_encode({"m": "resolve_symbol", "p": [chart_sess, "s1", f'={{"symbol":"{self.symbol}"}}']}))
             ws.send(_encode({"m": "create_series", "p": [chart_sess, "rs", "s1", "s1", interval, n_bars]}))
             
